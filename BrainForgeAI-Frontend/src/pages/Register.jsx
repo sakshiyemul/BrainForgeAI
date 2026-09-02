@@ -34,7 +34,7 @@ function Register() {
     setMessage({ text: "", type: "" });
 
     try {
-      const response = await fetch("http://localhost:8080/users/registerUser", {
+      const response = await fetch("https://brainforgeai-backend.onrender.com/users/registerUser", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

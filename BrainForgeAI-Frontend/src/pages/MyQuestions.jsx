@@ -24,7 +24,7 @@ function MyQuestions() {
 
   const fetchQuestions = async () => {
     try {
-      const response = await fetch("http://localhost:8080/questions/my", {
+      const response = await fetch("https://brainforgeai-backend.onrender.com/questions/my", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -59,8 +59,8 @@ function MyQuestions() {
     try {
       const url =
         editingId !== null
-          ? `http://localhost:8080/questions/${editingId}`
-          : "http://localhost:8080/questions";
+          ? `https://brainforgeai-backend.onrender.com/questions/${editingId}`
+          : "https://brainforgeai-backend.onrender.com/questions";
 
       const method = editingId !== null ? "PUT" : "POST";
 
@@ -119,7 +119,7 @@ function MyQuestions() {
     if (!window.confirm("Are you sure you want to delete this question?")) return;
 
     try {
-      const response = await fetch(`http://localhost:8080/questions/${id}`, {
+      const response = await fetch(`https://brainforgeai-backend.onrender.com/questions/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

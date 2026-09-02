@@ -24,7 +24,7 @@ function KnowledgeVaultView({ token }) {
 
   const fetchDocuments = async () => {
     try {
-      const res = await fetch("http://localhost:8080/documents", {
+      const res = await fetch("https://brainforgeai-backend.onrender.com/documents", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -53,7 +53,7 @@ function KnowledgeVaultView({ token }) {
     setMessage({ text: "", type: "" });
 
     try {
-      const res = await fetch("http://localhost:8080/documents/upload", {
+      const res = await fetch("https://brainforgeai-backend.onrender.com/documents/upload", {
         method: "POST",
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -83,7 +83,7 @@ function KnowledgeVaultView({ token }) {
     if (!window.confirm(`Are you sure you want to delete "${name}"?`)) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/documents/${id}`, {
+      const res = await fetch(`https://brainforgeai-backend.onrender.com/documents/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -105,7 +105,7 @@ function KnowledgeVaultView({ token }) {
     setDocQueryResponse(null);
 
     try {
-      const res = await fetch(`http://localhost:8080/documents/${activeDoc.id}/query`, {
+      const res = await fetch(`https://brainforgeai-backend.onrender.com/documents/${activeDoc.id}/query`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

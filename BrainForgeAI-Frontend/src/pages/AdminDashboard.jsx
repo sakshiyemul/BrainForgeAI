@@ -53,9 +53,9 @@ function AdminDashboard() {
 
     try {
       const [usersRes, questionsRes, analyticsRes] = await Promise.all([
-        fetch("http://localhost:8080/users/all", { headers: { Authorization: `Bearer ${token}` } }),
-        fetch("http://localhost:8080/questions/all", { headers: { Authorization: `Bearer ${token}` } }),
-        fetch("http://localhost:8080/analytics/admin", { headers: { Authorization: `Bearer ${token}` } }),
+        fetch("https://brainforgeai-backend.onrender.com/users/all", { headers: { Authorization: `Bearer ${token}` } }),
+        fetch("https://brainforgeai-backend.onrender.com/questions/all", { headers: { Authorization: `Bearer ${token}` } }),
+        fetch("https://brainforgeai-backend.onrender.com/analytics/admin", { headers: { Authorization: `Bearer ${token}` } }),
       ]);
 
       if (usersRes.status === 401 || questionsRes.status === 401 || analyticsRes.status === 401) {
@@ -110,7 +110,7 @@ function AdminDashboard() {
     }
 
     try {
-      const res = await fetch(`http://localhost:8080/users/${targetUser.id}`, {
+      const res = await fetch(`https://brainforgeai-backend.onrender.com/users/${targetUser.id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -137,7 +137,7 @@ function AdminDashboard() {
     if (!window.confirm("Are you sure you want to delete this question?")) return;
 
     try {
-      const res = await fetch(`http://localhost:8080/questions/${targetQuestion.id}`, {
+      const res = await fetch(`https://brainforgeai-backend.onrender.com/questions/${targetQuestion.id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });

@@ -17,7 +17,7 @@ function AnalyticsView({ token }) {
   const fetchAnalytics = async (isManual = false) => {
     if (isManual) setRefreshing(true);
     try {
-      const res = await fetch("http://localhost:8080/analytics/user", {
+      const res = await fetch("https://brainforgeai-backend.onrender.com/analytics/user", {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();

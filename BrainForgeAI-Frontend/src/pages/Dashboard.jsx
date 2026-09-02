@@ -29,7 +29,7 @@ function Dashboard() {
 
   const fetchConversations = async () => {
     try {
-      const res = await fetch("http://localhost:8080/chat/conversations", {
+      const res = await fetch("https://brainforgeai-backend.onrender.com/chat/conversations", {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -49,7 +49,7 @@ function Dashboard() {
     setActiveTab("chat");
     setStreamingContent("");
     try {
-      const res = await fetch(`http://localhost:8080/chat/conversations/${convId}`, {
+      const res = await fetch(`https://brainforgeai-backend.onrender.com/chat/conversations/${convId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -63,7 +63,7 @@ function Dashboard() {
 
   const handleNewChat = async () => {
     try {
-      const res = await fetch("http://localhost:8080/chat/conversations", {
+      const res = await fetch("https://brainforgeai-backend.onrender.com/chat/conversations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -86,7 +86,7 @@ function Dashboard() {
 
   const handleDeleteConversation = async (convId) => {
     try {
-      const res = await fetch(`http://localhost:8080/chat/conversations/${convId}`, {
+      const res = await fetch(`https://brainforgeai-backend.onrender.com/chat/conversations/${convId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -113,7 +113,7 @@ function Dashboard() {
     // Create a conversation on the fly if none exists
     if (!targetConvId) {
       try {
-        const res = await fetch("http://localhost:8080/chat/conversations", {
+        const res = await fetch("https://brainforgeai-backend.onrender.com/chat/conversations", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -141,7 +141,7 @@ function Dashboard() {
 
     // Use SSE Streaming
     try {
-      const url = `http://localhost:8080/chat/conversations/${targetConvId}/stream?prompt=${encodeURIComponent(prompt)}&useKnowledgeBase=${useKnowledgeBase}`;
+      const url = `https://brainforgeai-backend.onrender.com/chat/conversations/${targetConvId}/stream?prompt=${encodeURIComponent(prompt)}&useKnowledgeBase=${useKnowledgeBase}`;
       const response = await fetch(url, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -189,7 +189,7 @@ function Dashboard() {
       console.error("Streaming error, falling back to sync API", err);
       // Fallback to synchronous endpoint
       try {
-        const res = await fetch(`http://localhost:8080/chat/conversations/${targetConvId}/messages`, {
+        const res = await fetch(`https://brainforgeai-backend.onrender.com/chat/conversations/${targetConvId}/messages`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
